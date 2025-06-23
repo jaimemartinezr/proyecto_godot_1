@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpmaqba7uo78o"]
+
+[ext_resource type="Texture2D" uid="uid://3yacmt2idul1" path="res://assets/MOMIA1.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://rl4rb5nybcui" path="res://scripts/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(64, 144, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
+size = Vector2(16, 16)
+
+[node name="Enemy" type="StaticBody2D"]
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_md0e3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7p1mj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
